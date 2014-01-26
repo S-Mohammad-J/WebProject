@@ -1,22 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
+    {%  load staticfiles %}
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <title>فروشگاه محصولات</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="assets/style/font-awesome.css">
-  <link href="assets/style/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style/39.css">
-  <link href="assets/style/prettyPhoto.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style/slider.css">
-  <link rel="stylesheet" href="assets/style/flexslider.css">
-  <link href="assets/style/style.css" rel="stylesheet">
-  <link href="assets/style/lblue.css" rel="stylesheet">
-  <link href="assets/style/bootstrap-responsive.css" rel="stylesheet">
-  <script src="assets/js/jquery.js"></script>
-  <script src="assets/js/ajax.js"></script>
+  <link rel="stylesheet" href="{% static  "assets/style/font-awesome.css" %}">
+  <link href="{% static "assets/style/bootstrap.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "assets/style/39.css" %}">
+  <link href="{% static "assets/style/prettyPhoto.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "assets/style/slider.css" %}">
+  <link rel="stylesheet" href="{% static "assets/style/flexslider.css" %}">
+  <link href="{% static "assets/style/style.css" %}" rel="stylesheet">
+  <link href="{% static "assets/style/lblue.css" %}" rel="stylesheet">
+  <link href="{% static "assets/style/bootstrap-responsive.css" %}" rel="stylesheet">
+  <script src="{% static "assets/js/jquery.js" %}"></script>
+  <script src="{% static "assets/js/ajax.js" %}"></script>
+
+        <!-- JS -->
+    <script src="{% static "assets/js/bootstrap.js" %}"></script>
+    <script src="{% static "assets/js/jquery.isotope.js" %}"></script> <!-- Isotope for gallery -->
+    <script src="{% static "assets/js/jquery.prettyPhoto.js" %}"></script> <!-- prettyPhoto for images -->
+    <script src="{% static "assets/js/jquery.cslider.js" %}"></script> <!-- Parallax slider -->
+    <script src="{% static "assets/js/modernizr.custom.28468.js" %}"></script>
+    <script src="{% static "assets/js/filter.js" %}"></script> <!-- Filter for support page -->
+    <script src="{% static "assets/js/cycle.js" %}"></script> <!-- Cycle slider -->
+    <script src="{% static "assets/js/jquery.flexslider-min.js" %}"></script> <!-- Flex slider -->
+    <script src="{% static "assets/js/bootstrap.file-input.js" %}"></script> <!-- file input -->
+
+    <script src="{% static "assets/js/easing.js" %}"></script> <!-- Easing -->
+    <script src="{% static "assets/js/custom.js" %}"></script>
   
 </head>
 
@@ -84,27 +99,29 @@
 		<div class="span8 pull-right">
         <!-- Slider -->
           <div id="da-slider" class="da-slider">
-            <div class="da-slide">
-              <div class="da-blue">
-                <h2 class="rtl"><span>محصول 1</span></h2>
-                <p class='tahoma rtl'>توضیحات</p>
-                <div class="da-img"><img src="assets/img/parallax/product-red-ipod-mock2.gif" alt="image01" /></div>
-              </div>
-            </div>
-            <div class="da-slide">
-              <div class="da-green">
-                <h2 class="rtl"><span>محصول 2</span></h2>
-				<p class='tahoma rtl'>توضیحات</p>
-                <div class="da-img"><img src="assets/img/parallax/iPod_touch_HERO.jpg" alt="image02" /></div>
-              </div>
-            </div>
-			 <div class="da-slide">
-              <div class="da-red">
-                <h2 class="rtl"><span>محصول 3</span></h2>
-				<p class='tahoma rtl'>توضیحات</p>
-                <div class="da-img"><img src="assets/img/parallax/5-image5.jpg" alt="image03" /></div>
-              </div>
-            </div>
+              {% for slideshowProduct in slideshowProducts %}
+                <div class="da-slide">
+                  <div >
+                    <h2 class="rtl"><span>{{ slideshowProduct.product.name }}</span></h2>
+                    <p class='tahoma rtl'>{{ slideshowProduct.text }}</p>
+                    <div class="da-img"><img src="{{ slideshowProduct.SlideshowPic.url }}" alt="image01" /></div>
+                  </div>
+                </div>
+              {% endfor %}
+{#            <div class="da-slide">#}
+{#              <div class="da-green">#}
+{#                <h2 class="rtl"><span>محصول 2</span></h2>#}
+{#				<p class='tahoma rtl'>توضیحات</p>#}
+{#                <div class="da-img"><img src="assets/img/parallax/iPod_touch_HERO.jpg" alt="image02" /></div>#}
+{#              </div>#}
+{#            </div>#}
+{#			 <div class="da-slide">#}
+{#              <div class="da-red">#}
+{#                <h2 class="rtl"><span>محصول 3</span></h2>#}
+{#				<p class='tahoma rtl'>توضیحات</p>#}
+{#                <div class="da-img"><img src="assets/img/parallax/5-image5.jpg" alt="image03" /></div>#}
+{#              </div>#}
+{#            </div>#}
             <nav class="da-arrows">
               <span class="da-arrows-prev"></span>
               <span class="da-arrows-next"></span>
@@ -248,18 +265,6 @@
   </div>
 </footer> 
 	
-<!-- JS -->
-<script src="assets/js/bootstrap.js"></script> 
-<script src="assets/js/jquery.isotope.js"></script> <!-- Isotope for gallery -->
-<script src="assets/js/jquery.prettyPhoto.js"></script> <!-- prettyPhoto for images -->
-<script src="assets/js/jquery.cslider.js"></script> <!-- Parallax slider -->
-<script src="assets/js/modernizr.custom.28468.js"></script>
-<script src="assets/js/filter.js"></script> <!-- Filter for support page -->
-<script src="assets/js/cycle.js"></script> <!-- Cycle slider -->
-<script src="assets/js/jquery.flexslider-min.js"></script> <!-- Flex slider -->
-<script src="assets/js/bootstrap.file-input.js"></script> <!-- file input -->
 
-<script src="assets/js/easing.js"></script> <!-- Easing -->
-<script src="assets/js/custom.js"></script>
 </body>
 </html>
