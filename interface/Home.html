@@ -93,7 +93,16 @@
 		<div class="span4 pull-left">
 			<div class="da-slider rtl" style="overflow:auto;">
 			<h3>لیست دسته های محصولات</h3>
-			<p>salam</p>
+                {% for section in sections %}
+                    <p>{{ section.title }}</p>
+                    {% for subSection in subSections %}
+                        <ul>
+                        {% if subSection.section.id == section.id %}
+                            <li>{{ subSection.title }}</li>
+                        {% endif %}
+                        </ul>
+                    {% endfor %}
+                {% endfor %}
 			</div>
 		</div>
 		<div class="span8 pull-right">
