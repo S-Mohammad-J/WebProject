@@ -94,11 +94,11 @@
 			<div class="da-slider rtl" style="overflow:auto;">
 			<h3>لیست دسته های محصولات</h3>
                 {% for section in sections %}
-                    <p>{{ section.title }}</p>
+                    <a href="section\{{ section.id }}"><p>{{ section.title }}</p></a>
                     {% for subSection in subSections %}
                         <ul>
                         {% if subSection.section.id == section.id %}
-                            <li>{{ subSection.title }}</li>
+                            <a href="subSection\{{ subSection.id }}"><li>{{ subSection.title }}</li></a>
                         {% endif %}
                         </ul>
                     {% endfor %}
@@ -110,7 +110,7 @@
           <div id="da-slider" class="da-slider">
               {% for slideshowProduct in slideshowProducts %}
                 <div class="da-slide">
-                <a href="products/{{ slideshowProduct.product.id }}">
+                <a href="product/{{ slideshowProduct.product.id }}">
                   <div >
                     <h2 class="rtl"><span>{{ slideshowProduct.product.name }}</span></h2>
                     <p class='tahoma rtl'>{{ slideshowProduct.text }}</p>
@@ -152,6 +152,13 @@
         <h3>پیشنهادهای ما برای شما</h3>
       </div>
 
+        {% for suggestProduct in suggestProducts %}
+            <a href="product/{{ suggestProduct.id }}">
+            <img src="{{ suggestProduct.picture.url }}" />
+            <p>{{ suggestProduct.name }}</p>
+            </a>
+
+        {% endfor %}
       <div class="span6">
         <div class="col-l">
           <div class="service">
@@ -207,7 +214,13 @@
       <div class="span12">
         <h3>پیشنهادهای ما برای شما</h3>
       </div>
+            {% for portarafdar in portarafdars %}
+                <a href="product/{{ portarafdar.id }}">
+                <img src="{{ portarafdar.picture.url }}" />
+                <p>{{ portarafdar.name }}</p>
+                </a>
 
+             {% endfor %}
       <div class="span6">
         <div class="col-l">
           <div class="service">

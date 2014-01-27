@@ -8,6 +8,8 @@ __author__ = 'Anonymous'
 
 urlpatterns= patterns('',
     url(r'^$', views.index,name="index"),
-    url(r'^products/', views.products, name="products"),
+    url(r'^product/', views.product, name="product"),
+    url(r'^section/', views.section, name="section"),
+    url(r'^subSection/', views.subSection, name="subSection"),
 )
 
