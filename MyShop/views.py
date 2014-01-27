@@ -17,3 +17,12 @@ def index(request):
     }
     return render(request,"Home.html",context)
 
+def products(request):
+    slideshowProducts = SlideshowProduct.objects.all()
+    sections=Section.objects.all()
+    subSections=SubSection.objects.all()
+    context={"slideshowProducts":slideshowProducts,
+             "sections":sections,
+             "subSections":subSections
+    }
+    return render(request,"product.html",context)

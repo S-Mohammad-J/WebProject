@@ -4,7 +4,11 @@
     <data-source source="LOCAL" name="Django default" uuid="a928536a-5299-4e34-85d6-e2f6e3909e50">
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\Anonymous\PycharmProjects\Online_Shop\db.sqlite3</jdbc-url>
-      <libraries />
+      <libraries>
+        <library>
+          <url>file://</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>

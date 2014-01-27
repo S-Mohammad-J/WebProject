@@ -110,12 +110,14 @@
           <div id="da-slider" class="da-slider">
               {% for slideshowProduct in slideshowProducts %}
                 <div class="da-slide">
+                <a href="products/{{ slideshowProduct.product.id }}">
                   <div >
                     <h2 class="rtl"><span>{{ slideshowProduct.product.name }}</span></h2>
                     <p class='tahoma rtl'>{{ slideshowProduct.text }}</p>
                     <div class="da-img"><img src="{{ slideshowProduct.SlideshowPic.url }}" alt="image01" /></div>
                   </div>
                 </div>
+                </a>
               {% endfor %}
 {#            <div class="da-slide">#}
 {#              <div class="da-green">#}
