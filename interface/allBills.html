@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>مشاهده صورتحساب های اخیر</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="assets/style/font-awesome.css">
+  <link href="assets/style/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style/39.css">
+  <link href="assets/style/prettyPhoto.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style/slider.css">
+  <link rel="stylesheet" href="assets/style/flexslider.css">
+  <link href="assets/style/style.css" rel="stylesheet">
+  <link href="assets/style/lblue.css" rel="stylesheet">
+  <link href="assets/style/bootstrap-responsive.css" rel="stylesheet">
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/js/ajax.js"></script>
+  
+</head>
+
+<body  dir="rtl">
+<!-- Navigation bar starts -->
+          <div class="navbar">
+           <div class="navbar-inner">
+             <div class="container">
+               <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                 <span>صفحات</span>
+               </a>
+               <div class="nav-collapse collapse">
+                 <ul class="nav" dir="rtl">
+                   <li><a href="">صفحه اصلی</a></li>
+				   <li><a href="">ثبت نام</a></li>
+				   <li><a href="">ورود</a></li>
+				   
+                 </ul>
+               </div>
+              </div>
+           </div>
+         </div>
+		 
+		 <div class="content">
+  <div class="container">
+
+
+<div class="content">
+  <div class="container">
+
+  <div class="row tasks">
+    <div class="span12">
+	 
+		<h2>مشاهده صورتحساب های اخیر</h2>
+		<hr />
+		{% if (count(bills) == 0) %}
+		<div class="alert alert-info" id="nodata">
+			هنوز هیچ درآمد یا خرجی ثبت نشده است
+		</div>
+		{% endif %}
+		<div id="bills">
+		{% for bill in bills %}
+		 <div class="task rtl important">
+			<div class="tmeta">
+				<i class="icon-bell"></i> در تاریخ {{ bill.time }} به مقدار <strong>{{ bill. amount }}</strong> تومان خرج کردید <i class="icon-folder-close-alt"></i> بابت <strong>{{ bill.category }}</strong> <i class="icon-info-sign"></i> <a href="bill/view/" +"{{ bill.id)}}"> توضیحات بیشتر</a>
+			</div>
+		  </div>
+		 {% endfor %}
+		</div>
+		</div>
+		</div>
+
+    </div>
+  </div>
+	<div class="border"></div>
+	</div>
+</div>
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+
+      <div class="span12">
+          <div class="copy">
+            <h5><span class="color">فروشگاه محصولات</span></h5>
+            <p>&copy; کلیه حقوق متعلق به وب سایت فروشگاه محصولات می باشد| <a href="#">صفحه اصلی</a></p>
+          </div>
+      </div>
+    </div>
+  <div class="clearfix"></div>
+  </div>
+</footer> 
+	
+<!-- JS -->
+<script src="assets/js/bootstrap.js"></script> 
+<script src="assets/js/jquery.isotope.js"></script> <!-- Isotope for gallery -->
+<script src="assets/js/jquery.prettyPhoto.js"></script> <!-- prettyPhoto for images -->
+<script src="assets/js/jquery.cslider.js"></script> <!-- Parallax slider -->
+<script src="assets/js/modernizr.custom.28468.js"></script>
+<script src="assets/js/filter.js"></script> <!-- Filter for support page -->
+<script src="assets/js/cycle.js"></script> <!-- Cycle slider -->
+<script src="assets/js/jquery.flexslider-min.js"></script> <!-- Flex slider -->
+<script src="assets/js/bootstrap.file-input.js"></script> <!-- file input -->
+
+<script src="assets/js/easing.js"></script> <!-- Easing -->
+<script src="assets/js/custom.js"></script>
+</body>
+</html>
