@@ -49,26 +49,7 @@
     <div class="row">
 	  <div class="span12">
         <h2>ورود</h2>
-		{% if (error == 'new_acc') %}
-		<div class="alert alert-success">
-			ثبت نام شما با موفقیت انجام شد! پس از فعال‌سازی حساب خود، می‌توانید وارد شوید!
-		</div>
-		{% endif %}
-		{% if (error == 'bad_login') %}
-		<div class="alert alert-error">
-			نام کاربری و یا کلمه‌ی عبور وارد شده معتبر نمی‌باشد!
-		</div>
-		{% endif %}
-		{% if (error == 'not_valid') %}
-		<div class="alert alert-error">
-			برای ورود باید حساب خود را فعال کنید. روی لینک ایمیل دریافتی کلیک نمایید.
-		</div>
-		{% endif %}
-		{% if (error == 'activated') %}
-		<div class="alert alert-info">
-			حساب شما فعال شد! می‌توانید وارد شوید
-		</div>
-		{% endif %}
+
 	  </div>
       <div class="span6 offset3">
 			<form action="users/login" method="post" class="form-horizontal form-horizontal-rtl"><!-- Django -->

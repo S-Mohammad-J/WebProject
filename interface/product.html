@@ -40,6 +40,10 @@
 <script src="{% static "assets/js/easing.js" %}"></script> <!-- Easing -->
 <script src="{% static "assets/js/custom.js" %}"></script>
 
+    {#    my JS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1#}
+    <script src="{% static "assets/js/jquery.js" %}"></script>
+    <script src="{% static "myAjax.js" %}"></script>
+
 </head>
 
 <body  dir="rtl">
@@ -105,7 +109,11 @@
             {% endfor %}
 
 		</div>
-		<a href="" class="btn btn-danger pull-left"><i class="icon-plus-sign"></i> اضافه کردن نظر </a>
+		<a id="sendComment" class="btn btn-danger pull-left"><i class="icon-plus-sign"></i> اضافه کردن نظر </a>
+		<div class="span6 pull-right">
+		<i class="icon-comment"></i>
+		<input class="rtl" type="text" id="comment" name="comment" placeholder="comment..." value="" />
+		</div>
 		<div class="clearfix"></div>
       </div>
     </div>
