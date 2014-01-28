@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {%  load staticfiles %}
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <title>مشاهده محصول</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="stylesheet" type="text/css" href="assets/fancy/source/jquery.fancybox.css?v=2.1.5" media="screen" />
-  <link rel="stylesheet" href="assets/style/font-awesome.css">
-  <link href="assets/style/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style/39.css">
-  <link href="assets/style/prettyPhoto.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style/slider.css">
-  <link rel="stylesheet" href="assets/style/flexslider.css">
-  <link href="assets/style/style.css" rel="stylesheet">
-  <link href="assets/style/lblue.css" rel="stylesheet">
-  <link href="assets/style/bootstrap-responsive.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static  "assets/fancy/source/jquery.fancybox.css?v=2.1.5" %}" media="screen" />
+  <link rel="stylesheet" href="{% static  "assets/style/font-awesome.css" %}">
+  <link href="{% static  "assets/style/bootstrap.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static  "assets/style/39.css" %}">
+  <link href="{% static "assets/style/prettyPhoto.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static  "assets/style/slider.css" %}">
+  <link rel="stylesheet" href="{% static  "assets/style/flexslider.css" %}">
+  <link href="{% static  "assets/style/style.css" %}" rel="stylesheet">
+  <link href="{% static  "assets/style/lblue.css" %}" rel="stylesheet">
+  <link href="{% static  "assets/style/bootstrap-responsive.css" %}" rel="stylesheet">
   
-  <script type="text/javascript" src="assets/js/jquery.js"></script>
-  <script type="text/javascript" src="assets/js/fancybox.js"></script>
+  <script type="text/javascript" src="{% static "assets/js/jquery.js" %}"></script>
+  <script type="text/javascript" src="{% static "assets/js/fancybox.js" %}"></script>
+
+    <!-- JS -->
+<script src="{% static "assets/js/bootstrap.js" %}"></script>
+<script src="{% static "assets/js/jquery.isotope.js" %}"></script> <!-- Isotope for gallery -->
+<!--<script src="assets/js/jquery.prettyPhoto.js"></script> <!-- prettyPhoto for images -->
+<script src="{% static "assets/js/jquery.cslider.js" %}"></script> <!-- Parallax slider -->
+<script src="{% static "assets/js/modernizr.custom.28468.js" %}"></script>
+<script src="{% static "assets/js/filter.js" %}"></script> <!-- Filter for support page -->
+<script src="{% static "assets/js/cycle.js" %}"></script> <!-- Cycle slider -->
+<script src="{% static "assets/js/jquery.flexslider-min.js" %}"></script> <!-- Flex slider -->
+<script src="{% static "assets/js/bootstrap.file-input.js" %}"></script> <!-- file input -->
+
+<!-- Add jQuery library -->
+<script type="text/javascript" src="{% static "assets/fancy/lib/jquery-1.10.1.min.js" %}"></script>
+
+<!-- Add fancyBox main JS and CSS files -->
+<script type="text/javascript" src="{% static "assets/fancy/source/jquery.fancybox.js?v=2.1.5" %}"></script>
+<script src="{% static "assets/js/easing.js" %}"></script> <!-- Easing -->
+<script src="{% static "assets/js/custom.js" %}"></script>
 
 </head>
 
@@ -54,15 +74,19 @@
       
 	
       <div class="task cool rtl">
-        <h3>محصول ایکس</h3>
+        <h3>{{ productObject.name }}</h3>
         <div class="tmeta">
 		 <div class="da-img">
 
 		 <a class="fancybox" rel="group" href="assets/img/parallax/5-image5.jpg">
-		 <img src="assets/img/parallax/5-image5.jpg" alt="image01"></a>
+		 <img src="{{ productObject.picture.url }}" alt="image01"></a>
 		</div>
-			قیمت: 1000<br />
-			سایز: بزرگ<br />
+			قیمت: {{ productObject.price }} <br/>
+			امتیاز: {{ productObject.score }} <br/>
+            <p>جزئیات</p>
+            <p>{{ productObject.details }}</p>
+
+
 			
 			<i class="icon-star"></i> میزان علاقه: 8/10
 			<br /><i class="icon-calendar"></i> مدل: 2013
@@ -74,10 +98,12 @@
 	  <div class="task important rtl">
         <h5>نظر کاربران</h5>
         <div class="tmeta">
-			کاربر 1: قیمت زیاد است.<br />
-			کاربر 2: از سایز بزرگش خیلی راضیم.<br />
-			
-			<i class="icon-star"></i> میزان علاقه: 8/10
+            {% for comment in comments %}
+                <p>{{ comment.customer.username }}:</p>
+                <p>{{ comment.content }}</p>
+
+            {% endfor %}
+
 		</div>
 		<a href="" class="btn btn-danger pull-left"><i class="icon-plus-sign"></i> اضافه کردن نظر </a>
 		<div class="clearfix"></div>
@@ -105,23 +131,6 @@
   </div>
 </footer> 
 	
-<!-- JS -->
-<script src="assets/js/bootstrap.js"></script> 
-<script src="assets/js/jquery.isotope.js"></script> <!-- Isotope for gallery -->
-<!--<script src="assets/js/jquery.prettyPhoto.js"></script> <!-- prettyPhoto for images -->
-<script src="assets/js/jquery.cslider.js"></script> <!-- Parallax slider -->
-<script src="assets/js/modernizr.custom.28468.js"></script>
-<script src="assets/js/filter.js"></script> <!-- Filter for support page -->
-<script src="assets/js/cycle.js"></script> <!-- Cycle slider -->
-<script src="assets/js/jquery.flexslider-min.js"></script> <!-- Flex slider -->
-<script src="assets/js/bootstrap.file-input.js"></script> <!-- file input -->
 
-<!-- Add jQuery library -->
-<script type="text/javascript" src="assets/fancy/lib/jquery-1.10.1.min.js"></script>
-
-<!-- Add fancyBox main JS and CSS files -->
-<script type="text/javascript" src="assets/fancy/source/jquery.fancybox.js?v=2.1.5"></script>
-<script src="assets/js/easing.js"></script> <!-- Easing -->
-<script src="assets/js/custom.js"></script>
 </body>
 </html>
