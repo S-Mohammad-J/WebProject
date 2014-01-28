@@ -2,6 +2,11 @@
 	border-radius: 0px !important;
 }
 
+.topmenu ul:target li:after {
+content: attr(added-data);
+display : block;
+}
+
 body{
 	color: #666;
 	font-size: 15px;

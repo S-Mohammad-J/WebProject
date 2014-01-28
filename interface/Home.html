@@ -66,7 +66,6 @@
     <div class="row">
       <div class="span12">
         <h2>به وب‌سایت فروشگاه محصولات خوش آمدید</h2>
-		<button id="test" class="btn ">test</button>
         <p>شما می توانید محصولات مورد نظرتان را در خانه و از طریق اینترنت خریداری کنید!</p>
         <hr />
       </div>  
@@ -77,7 +76,22 @@
 <!--  search starts -->
   <div class="row">
 	<div class="span12">
+		<div class="span6 pull-right">
 		<input type="search" class="search" autocomplete="on" placeholder="جستجو" value="" style="width:98.5%;">
+		</div>
+		<div class="span2 pull-right">
+		<div class="controls">
+					<select id="rcategory" name="rcategory" class="span4  pull-right">
+						<option value="0">نوع دسته را انتخاب کنید...</option>
+						
+							<option value="1">{{cat.name}}</option>
+						
+					</select>
+				</div>
+		</div>
+		<div class="span1">
+		<input type="submit" value="جستجو" class="btn btn-primary btn-small">
+		</div>
 	</div>
 </div>
 <!--  search ends -->
@@ -93,16 +107,22 @@
 		<div class="span4 pull-left">
 			<div class="da-slider rtl" style="overflow:auto;">
 			<h3>لیست دسته های محصولات</h3>
+			<ul class="menu	">
                 {% for section in sections %}
-                    <a href="section\{{ section.id }}"><p>{{ section.title }}</p></a>
+					<li class="dropdown">
+					<button class="btn pull-left"><a href="section\{{ section.id }}"></button>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <p>{{ section.title }}</p>
                     {% for subSection in subSections %}
-                        <ul>
+                        <ul class="dropdown-menu">
                         {% if subSection.section.id == section.id %}
-                            <a href="subSection\{{ subSection.id }}"><li>{{ subSection.title }}</li></a>
+                            <li><a href="subSection\{{ subSection.id }}">{{ subSection.title }}</a></li>
                         {% endif %}
                         </ul>
                     {% endfor %}
+					</li>
                 {% endfor %}
+			</ul>
 			</div>
 		</div>
 		<div class="span8 pull-right">
@@ -144,129 +164,66 @@
 <!-- Slider Ends -->
 
 
-<!-- Slider starts -->
+<!-- Services starts -->
   
     <div class="row">
 
       <div class="span12">
-        <h3>پیشنهادهای ما برای شما</h3>
+        <h3>محصولات پرطرفدار</h3>
       </div>
-
-        {% for suggestProduct in suggestProducts %}
-            <a href="product/{{ suggestProduct.id }}">
-            <img src="{{ suggestProduct.picture.url }}" />
-            <p>{{ suggestProduct.name }}</p>
-            </a>
-
+        {% for portarafdar in portarafdars %}
+		{% if forloop.counter|divisibleby:2 %}
+		<div class="col-r">
+				<a href="product/{{ portarafdar.id }}">
+				<img src="{{ portarafdar.picture.url }}" alt="{{ portarafdar.name }}" width="200" height="100"/>
+				<center><h4>{{ portarafdar.name }}</h4></center>
+				</a>
+			</div>
+		</div>
+			{% else %}
+			
+		
+		<div class="span6">
+			<div class="col-l">
+				<a href="product/{{ portarafdar.id }}">
+				<img src="{{ portarafdar.picture.url }}" alt="{{ portarafdar.name }}" width="200" height="100"/>
+				<center><h4>{{ portarafdar.name }}</h4></center>
+				</a>
+			</div>
+		{% endif %}
         {% endfor %}
-      <div class="span6">
-        <div class="col-l">
-          <div class="service">
-            <div class="b-orange serv-block">
-              <i class="icon-bell"></i>
-			</div>
-            <h3>محصول پیشنهادی4</h3>
-            <p>توضیحات محصول...</p>
-          </div>
-        </div>
-        <div class="col-r">
-          <div class="service">      
-            <div class="b-purple serv-block">
-              <i class="icon-bar-chart"></i>
-			</div>
-            <h3>محصول پیشنهادی3</h3>     
-            <p>توضیحات محصول...</p>
-          </div>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-      <div class="span6">
-        <div class="col-l">
-          <div class="service">
-            <div class="b-green serv-block">
-              <i class="icon-credit-card"></i>
-			</div>
-            <h3>محصول پیشنهادی2</h3>
-            <p>توضیحات محصول...</p>
-          </div>
-        </div>
-        <div class="col-r">
-          <div class="service"> 
-            <div class="b-blue serv-block">
-              <i class="icon-check"></i>
-			</div> 
-            <h4>محصول پیشنهادی1</h4>       
-            <p>توضیحات محصول...</p>
-          </div>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-    </div>
-
-<!-- Slider Ends -->
-
+	</div>
 
 <!-- Services starts -->
 
-  <div class="services">
     <div class="row">
 
       <div class="span12">
         <h3>پیشنهادهای ما برای شما</h3>
       </div>
-            {% for portarafdar in portarafdars %}
-                <a href="product/{{ portarafdar.id }}">
-                <img src="{{ portarafdar.picture.url }}" />
-                <p>{{ portarafdar.name }}</p>
-                </a>
-
-             {% endfor %}
-      <div class="span6">
-        <div class="col-l">
-          <div class="service">
-            <div class="b-orange serv-block">
-              <i class="icon-bell"></i>
+	 
+            {% for suggestProduct in suggestProducts %}
+		{% if forloop.counter|divisibleby:2 %}
+		<div class="col-r">
+				<a href="product/{{ suggestProduct.id }}">
+				<img src="{{ suggestProduct.picture.url }}" alt="{{ suggestProduct.name }}" width="200" height="100"/>
+				<center><h4>{{ suggestProduct.name }}</h4></center>
+				</a>
 			</div>
-            <h3>محصول پیشنهادی4</h3>
-            <p>توضیحات محصول...</p>
-          </div>
-        </div>
-        <div class="col-r">
-          <div class="service">      
-            <div class="b-purple serv-block">
-              <i class="icon-bar-chart"></i>
+		</div>
+			{% else %}
+			
+		
+		<div class="span6">
+			<div class="col-l">
+				<a href="product/{{ suggestProduct.id }}">
+				<img src="{{ suggestProduct.picture.url }}" alt="{{ suggestProduct.name }}" width="200" height="100"/>
+				<center><h4>{{ suggestProduct.name }}</h4></center>
+				</a>
 			</div>
-            <h3>محصول پیشنهادی3</h3>     
-            <p>توضیحات محصول...</p>
-          </div>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-      <div class="span6">
-        <div class="col-l">
-          <div class="service">
-            <div class="b-green serv-block">
-              <i class="icon-credit-card"></i>
-			</div>
-            <h3>محصول پیشنهادی2</h3>
-            <p>توضیحات محصول...</p>
-          </div>
-        </div>
-        <div class="col-r">
-          <div class="service"> 
-            <div class="b-blue serv-block">
-              <i class="icon-check"></i>
-			</div> 
-            <h4>محصول پیشنهادی1</h4>       
-            <p>توضیحات محصول...</p>
-          </div>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-
-    </div>
-  </div>
-
+		{% endif %}
+        {% endfor %}
+	</div>
 <!-- Services Ends -->
   <div class="border"></div>
 
