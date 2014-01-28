@@ -107,12 +107,13 @@
 		<div class="span4 pull-left">
 			<div class="da-slider rtl" style="overflow:auto;">
 			<h3>لیست دسته های محصولات</h3>
-			<ul class="menu	">
+			<ul class="menu">
                 {% for section in sections %}
+				<br>
 					<li class="dropdown">
-					<button class="btn pull-left"><a href="section\{{ section.id }}"></button>
+					<a href="section\{{ section.id }}"><button class="btn pull-left btn-danger">مشاهده</button></a>
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <p>{{ section.title }}</p>
+                    <div class="btn btn-sm btn-primary">{{ section.title }}</div></a>
                     {% for subSection in subSections %}
                         <ul class="dropdown-menu">
                         {% if subSection.section.id == section.id %}
